@@ -25,7 +25,7 @@ jobs:
       run: |
         mvn clean install
 
-        gcloud auth activate-service-account "ci-cd-service-account@voicetotext-362509.iam.gserviceaccount.com" --key-file=./test-auth-key.json
+        gcloud auth login --cred-file=./test-auth-key.json
         
         gcloud auth configure-docker asia-south1-docker.pkg.dev
         
