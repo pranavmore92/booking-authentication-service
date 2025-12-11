@@ -30,7 +30,7 @@ jobs:
 
         gcloud auth login --cred-file=test-auth-key.json
 
-        gcloud auth activate-service-account --key-file=test-auth-key.json
+        gcloud config set project voicetotext-362509
         
         gcloud auth configure-docker asia-south1-docker.pkg.dev
         
