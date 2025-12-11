@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java build by Vishal
 
 on:
   push:
@@ -22,4 +22,6 @@ jobs:
         cache: 'maven'
 
     - name: Build project with Maven
-      run: mvn -B package --file pom.xml
+      run: |
+        mvn clean install
+        docker build -t booking-authentication-service .
