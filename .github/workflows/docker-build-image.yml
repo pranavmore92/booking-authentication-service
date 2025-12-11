@@ -24,4 +24,13 @@ jobs:
     - name: Build project with Maven
       run: |
         mvn clean install
-        docker build -t booking-authentication-service .
+
+        gcloud auth activate-service-account "ci-cd-service-account@voicetotext-362509.iam.gserviceaccount.com" --key-file=./test-auth-key.json
+        
+        gcloud auth configure-docker asia-south1-docker.pkg.dev
+        
+        docker build -t booking-authentication-service:1.0.1 .
+
+        docker tag booking-authentication-service:1.0.1 asia-south1-docker.pkg.dev/voicetotext-362509/vishal-test-repository/booking-authentication-service:1.0.1
+
+        docker push asia-south1-docker.pkg.dev/voicetotext-362509/vishal-test-repository/booking-authentication-service:1.0.1
