@@ -25,7 +25,12 @@ jobs:
       run: |
         mvn clean install
 
-        gcloud auth login --cred-file=./test-auth-key.json
+        echo "Current directory path "
+        pwd
+
+        gcloud auth login --cred-file=test-auth-key.json
+
+        gcloud auth activate-service-account --key-file=test-auth-key.json
         
         gcloud auth configure-docker asia-south1-docker.pkg.dev
         
